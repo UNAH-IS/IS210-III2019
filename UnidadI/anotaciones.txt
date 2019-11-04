@@ -1,0 +1,19 @@
+Programación Orientada a Objetos
+Paradigma de programación que utiliza objetos para todas sus interacciones.
+
+Pilares de la Programación Orientada a Objetos
+*Abstracción: Es utilizar alguna funcionalidad de una clase sin necesidad de saber como funciona internamente. Nos abstraemos de su funcionalidad.
+
+*Encapsulación: Permite proteger atributos/metodos internos de una clase para evitar modificaciones/llamados erroneas o no intencionales. Para lograrlo se puede utilizar modificadores de acceso los cuales son:
+    default: Tecnicamente no se escribe, un atributo/metodo con este modificador puede ser accedido desde cualquier otra clase que este en el mismo paquete.
+
+    public: Con este modificador se puede acceder a un atributo/metodo desde cualquier clase aunque no esten en el mismo paquete. En un archivo .java solo puede existir una clase publica pero pueden existir muchas privadas
+
+    private: Con este modificador solo se puede acceder a un atributo/metodo dentro de la misma clase. Este modificador se utiliza para aplicar el concepto de encapsulación.
+
+    protected: Se verá hasta el tema de herencia.
+
+*Herencia
+
+*Polimorfismo
+
