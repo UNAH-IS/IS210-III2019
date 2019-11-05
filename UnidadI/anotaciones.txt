@@ -9,7 +9,7 @@ Pilares de la Programación Orientada a Objetos
 
     public: Con este modificador se puede acceder a un atributo/metodo desde cualquier clase aunque no esten en el mismo paquete. En un archivo .java solo puede existir una clase publica pero pueden existir muchas privadas
 
-    private: Con este modificador solo se puede acceder a un atributo/metodo dentro de la misma clase. Este modificador se utiliza para aplicar el concepto de encapsulación.
+    private: Con este modificador solo se puede acceder a un atributo/metodo dentro de la misma clase. Este modificador se utiliza para aplicar el concepto de encapsulación. Tecnicamente se aplica definiendo los atributos como privados y acceder/modificar sus valores utilizando metodos publicos conocidos como set y get
 
     protected: Se verá hasta el tema de herencia.
 
@@ -17,3 +17,15 @@ Pilares de la Programación Orientada a Objetos
 
 *Polimorfismo
 
+
+
+
+
+Constructores:
+    Es un metodo con exactamente el mismo nombre de la clase.
+    Es el primer metodo que se ejecuta al instanciar una clase.
+    Si no se crea un constructor, Java crea uno vacio automaticamente.
+    El constructor no debe retornar ningun valor, incluso void.
+    Debe ser un metodo publico
+    Puede estar sobrecargado.
+    Usualmente se utiliza para inicializar atributos internos de la clase u otro tipo de variable.
