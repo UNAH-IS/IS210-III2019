@@ -29,3 +29,28 @@ Constructores:
     Debe ser un metodo publico
     Puede estar sobrecargado.
     Usualmente se utiliza para inicializar atributos internos de la clase u otro tipo de variable.
+
+
+
+ Colecciones: Son clases especiales en Java que utilizan conceptos de estructuras de datos, listas, arboles y similares para gestionar multiples objetos de forma dinamica.   Clases tipo coleccion:
+        ArrayList
+        List
+        HashMap
+        HashTable
+        LinkedList
+        ...
+
+
+    
+Ingresar Información:
+    Consola (Scanner)
+    Interfaces gráficas de usuario:
+        AWT (Deprecado)
+        Swing (Casi Deprecado):
+            JOptionPane: Clase con métodos estaticos para utilizar cuadros de dialogo.
+        JavaFX (Actual)
+
+Modificador static: Se utiliza para poder acceder a un atributo/metodo sin crear una instancia, generalmente son publicos. Para acceder a ellos se utiliza el nombre de la clase:   
+        NombreClase.nombreAtributo
+
+Ademas comparte el mismo valor para cualquier objeto de dicho tipo.

@@ -89,5 +89,7 @@ public class Principal {
 			
 			}
 		}while(opcion!=3);
+		
+		entrada.close();
 	}
 }
