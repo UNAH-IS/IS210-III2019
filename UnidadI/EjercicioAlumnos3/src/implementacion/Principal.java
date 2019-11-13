@@ -35,24 +35,8 @@ public class Principal {
 				break;
 			case 1:
 				Alumno a = new Alumno();
-				a.setIdentificacion(JOptionPane.showInputDialog("Identificación:"));
-				a.setCuenta(JOptionPane.showInputDialog("Cuenta:"));
-				a.setNombre(JOptionPane.showInputDialog("Nombre:"));
-				a.setApellido(JOptionPane.showInputDialog("Apellido:"));
-				a.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Edad:")));
-				a.setGenero(JOptionPane.showInputDialog("Genero:"));
-				
-				Carrera c = new Carrera();
-				c.setCodigo(Integer.parseInt(JOptionPane.showInputDialog("Codigo Carrera:")));
-				c.setNombreCarrera(JOptionPane.showInputDialog("Nombre carrera:"));
-				c.setCantidadClases(Integer.parseInt(JOptionPane.showInputDialog("Cantidad Clases")));
-				c.setJefe(JOptionPane.showInputDialog("Jefe carrera:"));
-				c.setCoordinador(JOptionPane.showInputDialog("Coordinador carrera:"));
-
-				a.setCarrera(c);
-				
-				alumnos.add(a);
-				 
+				a.solicitarInformacion();
+				alumnos.add(a);				 
 				break;
 			case 2:
 				//Solicitar al usuario el indice del alumno a modificar
@@ -60,20 +44,7 @@ public class Principal {
 				//Obtener el objeto del indice seleccionado
 				Alumno alumno = alumnos.get(indiceModificar);
 				//Modificar los atributos del objeto obtenido ingresando nuevamente tooooooda la informacion
-				alumno.setIdentificacion(JOptionPane.showInputDialog("Identificación:",alumno.getIdentificacion()));
-				alumno.setCuenta(JOptionPane.showInputDialog("Cuenta:",alumno.getCuenta()));
-				alumno.setNombre(JOptionPane.showInputDialog("Nombre:",alumno.getNombre()));
-				alumno.setApellido(JOptionPane.showInputDialog("Apellido:",alumno.getApellido()));
-				alumno.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Edad:",alumno.getEdad())));
-				alumno.setGenero(JOptionPane.showInputDialog("Genero:",alumno.getGenero()));
-				
-				Carrera carrera = alumno.getCarrera();
-				carrera.setCodigo(Integer.parseInt(JOptionPane.showInputDialog("Codigo Carrera:",carrera.getCodigo())));
-				carrera.setNombreCarrera(JOptionPane.showInputDialog("Nombre carrera:",carrera.getNombreCarrera()));
-				carrera.setCantidadClases(Integer.parseInt(JOptionPane.showInputDialog("Cantidad Clases",carrera.getCantidadClases())));
-				carrera.setJefe(JOptionPane.showInputDialog("Jefe carrera:",carrera.getJefe()));
-				carrera.setCoordinador(JOptionPane.showInputDialog("Coordinador carrera:",carrera.getCoordinador()));
-				
+				alumno.solicitarInformacion();				
 				break;
 			case 3:
 				//Solicitar al usuario que elemento eliminar
