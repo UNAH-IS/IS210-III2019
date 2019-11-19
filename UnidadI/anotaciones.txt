@@ -11,9 +11,11 @@ Pilares de la Programación Orientada a Objetos
 
     private: Con este modificador solo se puede acceder a un atributo/metodo dentro de la misma clase. Este modificador se utiliza para aplicar el concepto de encapsulación. Tecnicamente se aplica definiendo los atributos como privados y acceder/modificar sus valores utilizando metodos publicos conocidos como set y get
 
-    protected: Se verá hasta el tema de herencia.
+    protected: Permite acceder a un atributo/metodo desde la propia clase y desde clases hijas.
 
-*Herencia
+*Herencia: Es la funcionalidad que permite encapsular atributos y metodos en comun de un conjunto de clases bajo un mismo contexto. Esto permite al programador reutilizar codigo. De la estructura resultante surge una clase padre, super clase o clase base y de esta se extiende las clases hijas, subclase o clase derivada.
+
+    Sobreescritura de metodos: volver a escribir la estructura de un metodo que estaba previamente definido en una clase padre, dicho metodo puede tener una funcionalidad completamente diferente a la de clase padre. Se puede colocar previamente la anotacion @Override para indicar que un metodo se esta sobreescribiendo.
 
 *Polimorfismo
 
