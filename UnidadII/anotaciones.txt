@@ -1,0 +1,7 @@
+ Clases Abstractas: Son clases que se utilizan para generalizar. Se utilizan como molde para otras clases, siendo estas por lo general clases padre.
+ 
+ Caracteristicas:
+ *Una clase abstracta puede tener muchos, uno o ningun metodo abstracto.
+ *Un metodo abstracto es un metodo que no tiene cuerpo, solo se define, ademas es obligatorio redefinir dicho metodo abstracto en clases hijas. Si la clase tiene un metodo abstracto, la clase debe ser abstracta.
+ *Para definir una clase como abstracta se utiliza la palabra reservada abstract antes de class.
+ *Una clase abstracta noooooo se puede instanciar.

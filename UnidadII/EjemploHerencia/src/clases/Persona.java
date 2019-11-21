@@ -1,6 +1,6 @@
 package clases;
 
-public class Persona{
+public abstract class Persona{
     protected String identificacion;
     protected String nombre;
     protected String apellido;
@@ -67,10 +67,7 @@ public class Persona{
         this.carrera = carrera;
     }
 
-    public void matricular(){
-        System.out.println("Metodo matricular desde la clase persona");
-    }
-
+    public abstract void matricular();
 
     @Override
     public String toString() {

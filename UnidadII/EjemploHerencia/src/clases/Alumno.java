@@ -38,16 +38,17 @@ public class Alumno extends Persona{
     }*/
 
     @Override
+    public void matricular() {
+        System.out.println("Metodo matricular, esta sobreescrito obligatoriamente porque es abstracto en la clase persona");
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + " ---- Alumno{" +
+        return "ALUMNO: "+super.toString() + " ---- Alumno{" +
                 "cuenta='" + cuenta + '\'' +
                 ", promedio=" + promedio +
                 '}';
     }
 
-    @Override
-    public void matricular(){
-        super.matricular();
-        System.out.println("Metodo matricular desde la clase alumno");
-    }
+
 }
