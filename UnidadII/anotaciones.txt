@@ -23,3 +23,26 @@
  7. Copiar la siguiente linea en la caja de texto VM Options: 
 
  --module-path ####RUTA DE SUS LIBRERIAS#### --add-modules=javafx.controls
+
+ Pasos para ejecutar una aplicacion con JavaFX desde eclipse
+
+ 1. Help->Marketplace
+ 2. Escribir javafx en el buscador y luego instalar el paquete efxclipse
+ 3. Descargar JavaFX SDK
+ 4. Descomprimir las librerias de javaFX en algun directorio de su preferencia.
+ 5. Eclipse -> Window -> Preferences -> Java -> Build Path -> User Libraries -> New.
+ 6. Agregar un nombre descriptivo para las librerias, Ejemplo: JavaFXLib
+ 7. Add external JARs
+ 8. Agregar todos los archivos .jar del SDK descargado (carpeta lib)
+ 9. Apply and close
+ 10. Click derecho en el proyecto->propiedades->build path->Libraries
+ 11. Add Library->User Library y seleccionar la que se creo en el inciso 6
+ 12. Debera visualizarse la libreria en el proyecto.
+ 13. Run->Run Configurations->Arguments
+ 14. En el campo VM Arguments escribir lo siguiente
+
+ --module-path ####RUTA DE SUS LIBRERIAS#### --add-modules=javafx.controls
+
+
+
+ Eventos: Son acciones del usuario, ejemplo: presionar una tecla, mover el cursor, dar click, doble click, etc.
