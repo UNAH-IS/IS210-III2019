@@ -17,7 +17,6 @@ public class Principal extends Application{
     }
 
     public static void main(String args[]){
-        //new Principal();
         launch(args);
     }
 }

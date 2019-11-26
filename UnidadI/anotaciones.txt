@@ -17,7 +17,12 @@ Pilares de la Programación Orientada a Objetos
 
     Sobreescritura de metodos: volver a escribir la estructura de un metodo que estaba previamente definido en una clase padre, dicho metodo puede tener una funcionalidad completamente diferente a la de clase padre. Se puede colocar previamente la anotacion @Override para indicar que un metodo se esta sobreescribiendo.
 
-*Polimorfismo
+*Polimorfismo: Poli=>Muchas, Morfismo=>Formas
+En Java, un elemento puede tener la misma apariencia (nombre, tipo), pero puede tener funcionalidades diferentes.
+Ejemplos de polimorfismo:
+    Sobrecarga
+    Sobreescritura
+    Compatibilidad de clases
 
 
 

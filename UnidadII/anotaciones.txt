@@ -5,3 +5,21 @@
  *Un metodo abstracto es un metodo que no tiene cuerpo, solo se define, ademas es obligatorio redefinir dicho metodo abstracto en clases hijas. Si la clase tiene un metodo abstracto, la clase debe ser abstracta.
  *Para definir una clase como abstracta se utiliza la palabra reservada abstract antes de class.
  *Una clase abstracta noooooo se puede instanciar.
+
+
+ Graphic User Interface
+ AWT (Abstract Window Toolkit)
+ Swing
+ JavaFX (>7)
+
+
+ Pasos para ejecutar una aplicacion con JavaFX desde IntelliJ
+ 1. Descargar JavaFX SDK
+ 2. Descomprimir las librerias de javaFX en algun directorio de su preferencia.
+ 3. En IntelliJ, click en File>Project Structure
+ 4. Click en Librerias y luego en el boton + (Agregar)
+ 5. Buscar la carpeta lib de JavaFX
+ 6. Click en Run>Edit Configurations
+ 7. Copiar la siguiente linea en la caja de texto VM Options: 
+
+ --module-path ####RUTA DE SUS LIBRERIAS#### --add-modules=javafx.controls
