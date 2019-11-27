@@ -1,6 +1,9 @@
 package implementacion;
 
+import java.util.HashMap;
+
 import clases.Jugador;
+import clases.Tile;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -8,6 +11,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -19,11 +23,32 @@ public class Juego extends Application{
 	private GraphicsContext graficos;
 	private int puntuacion = 0;
 	private Jugador jugador;
+	private Tile t1;
+	private Tile t2;
+	private Tile t3;
 	public static boolean derecha=false;
 	public static boolean izquierda=false;
 	public static boolean arriba=false;
 	public static boolean abajo=false;
+	public static HashMap<String, Image> imagenes; //Shift+Ctrl+O
+	//private ArrayList<Image> imagenes;
 	
+	
+	private int[][] mapa = {
+			{1,50,0,0,1,1},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2},
+			{1,3,0,0,1,2}
+	};
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -42,10 +67,23 @@ public class Juego extends Application{
 	}
 	
 	public void inicializarComponentes() {
-		jugador = new Jugador(-50,400,"goku.png",1);
+		jugador = new Jugador(-50,400,"goku",1);
 		root = new Group();
 		escena = new Scene(root,1000,500);
 		canvas  = new Canvas(1000,500);
+		imagenes = new HashMap<String,Image>();
+		
+		t1 = new Tile(1,100,200, "tilemap",0);
+		t2 = new Tile(2,170,200, "tilemap",0);
+		t3 = new Tile(3,240,200, "tilemap",0);
+		cargarImagenes();
+		 
+	}
+	
+	public void cargarImagenes() {
+		imagenes.put("goku", new Image("goku.png"));
+		imagenes.put("goku-furioso", new Image("goku-furioso.png"));
+		imagenes.put("tilemap", new Image("tilemap.png"));
 	}
 	
 	public void pintar() {
@@ -54,6 +92,9 @@ public class Juego extends Application{
 		graficos.setFill(Color.BLACK);
 		graficos.fillText("Puntuacion: " + puntuacion, 10, 10);
 		jugador.pintar(graficos);
+		t1.pintar(graficos);
+		t2.pintar(graficos);
+		t3.pintar(graficos);
 	}
 	
 	public void gestionarEventos() {
@@ -77,7 +118,7 @@ public class Juego extends Application{
 							break;
 						case "SPACE":
 							jugador.setVelocidad(10);
-							jugador.setUrlImagen("goku-furioso.png");
+							jugador.setIndiceImagen("goku-furioso");
 							break;
 					}
 			}			
@@ -103,7 +144,7 @@ public class Juego extends Application{
 					break;
 				case "SPACE":
 					jugador.setVelocidad(1);
-					jugador.setUrlImagen("goku.png");
+					jugador.setIndiceImagen("goku");
 					break;
 			}
 				

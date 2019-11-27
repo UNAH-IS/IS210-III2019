@@ -7,14 +7,14 @@ import javafx.scene.image.Image;
 public class Jugador {
 	private int x;
 	private int y;
-	private String urlImagen;
+	private String indiceImagen;
 	private int velocidad;
 	
-	public Jugador(int x, int y, String urlImagen, int velocidad) {
+	public Jugador(int x, int y, String indiceImagen, int velocidad) {
 		super();
 		this.x = x;
 		this.y = y;
-		this.urlImagen = urlImagen;
+		this.indiceImagen = indiceImagen;
 		this.velocidad = velocidad;
 	}
 	
@@ -36,11 +36,11 @@ public class Jugador {
 	public void setY(int y) {
 		this.y = y;
 	}
-	public String getUrlImagen() {
-		return urlImagen;
+	public String getIndiceImagen() {
+		return indiceImagen;
 	}
-	public void setUrlImagen(String urlImagen) {
-		this.urlImagen = urlImagen;
+	public void setIndiceImagen(String indiceImagen) {
+		this.indiceImagen = indiceImagen;
 	}
 	
 	public void mover(){
@@ -60,7 +60,7 @@ public class Jugador {
 	}
 	
 	public void pintar(GraphicsContext graficos) {
-		graficos.drawImage(new Image(this.urlImagen), this.x, this.y);
+		graficos.drawImage(Juego.imagenes.get(this.indiceImagen), this.x, this.y);
 	}
 }
 
