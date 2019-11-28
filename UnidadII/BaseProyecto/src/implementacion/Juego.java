@@ -1,5 +1,6 @@
 package implementacion;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import clases.Jugador;
@@ -23,9 +24,6 @@ public class Juego extends Application{
 	private GraphicsContext graficos;
 	private int puntuacion = 0;
 	private Jugador jugador;
-	private Tile t1;
-	private Tile t2;
-	private Tile t3;
 	public static boolean derecha=false;
 	public static boolean izquierda=false;
 	public static boolean arriba=false;
@@ -33,21 +31,19 @@ public class Juego extends Application{
 	public static HashMap<String, Image> imagenes; //Shift+Ctrl+O
 	//private ArrayList<Image> imagenes;
 	
+	private ArrayList<Tile> tiles;
 	
 	private int[][] mapa = {
-			{1,50,0,0,1,1},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2},
-			{1,3,0,0,1,2}
+			{6,0,0,0,0,0,0},
+			{4,0,0,0,0,0,0},
+			{4,0,0,0,0,0,0},
+			{4,0,0,0,0,0,0},
+			{4,0,0,0,0,6,0},
+			{4,0,0,2,666,4,0},
+			{4,0,0,0,1,4,0},
+			{5,0,0,0,0,5,0},
+			{0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0}
 	};
 	
 	public static void main(String[] args) {
@@ -72,18 +68,15 @@ public class Juego extends Application{
 		escena = new Scene(root,1000,500);
 		canvas  = new Canvas(1000,500);
 		imagenes = new HashMap<String,Image>();
-		
-		t1 = new Tile(1,100,200, "tilemap",0);
-		t2 = new Tile(2,170,200, "tilemap",0);
-		t3 = new Tile(3,240,200, "tilemap",0);
 		cargarImagenes();
-		 
+		cargarTiles();
 	}
 	
 	public void cargarImagenes() {
 		imagenes.put("goku", new Image("goku.png"));
 		imagenes.put("goku-furioso", new Image("goku-furioso.png"));
 		imagenes.put("tilemap", new Image("tilemap.png"));
+		imagenes.put("megaman", new Image("megaman.png"));
 	}
 	
 	public void pintar() {
@@ -92,9 +85,21 @@ public class Juego extends Application{
 		graficos.setFill(Color.BLACK);
 		graficos.fillText("Puntuacion: " + puntuacion, 10, 10);
 		jugador.pintar(graficos);
-		t1.pintar(graficos);
-		t2.pintar(graficos);
-		t3.pintar(graficos);
+		
+		///Pintar tiles
+		for (int i=0;i<tiles.size();i++)
+			tiles.get(i).pintar(graficos);
+
+	}
+	
+	public void cargarTiles() {
+		tiles = new ArrayList<Tile>();
+		for(int i=0; i<mapa.length; i++) {
+			for(int j=0; j<mapa[i].length; j++) {
+				if (mapa[i][j]!=0)
+					tiles.add(new Tile(mapa[i][j], i*70, j*70, "tilemap",0));
+			}
+		}
 	}
 	
 	public void gestionarEventos() {

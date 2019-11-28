@@ -13,6 +13,7 @@ public class Tile {
 	private int yImagen;
 	private String indiceImagen;
 	private int velocidad;
+	private int invertir=1;
 	public Tile(int x, int y, int anchoImagen, int altoImagen, int xImagen, int yImagen, String indiceImagen,
 			int velocidad) {
 		super();
@@ -31,6 +32,7 @@ public class Tile {
 		this.y = y;
 		this.indiceImagen = indiceImagen;
 		this.velocidad = velocidad;
+		//this.invertir = invertir;
 		switch(tipoTile){
 			case 1:
 				this.altoImagen = 70;
@@ -49,6 +51,30 @@ public class Tile {
 				this.anchoImagen = 70;
 				this.xImagen = 0;
 				this.yImagen = 140;
+			break;
+			case 4:
+				this.altoImagen = 70;
+				this.anchoImagen = 70;
+				this.xImagen = 490;
+				this.yImagen = 558;
+			break;
+			case 5:
+				this.altoImagen = 70;
+				this.anchoImagen = 70;
+				this.xImagen = 560;
+				this.yImagen = 558;
+			break;
+			case 6:
+				this.altoImagen = 70;
+				this.anchoImagen = 70;
+				this.xImagen = 560;
+				this.yImagen = 698;
+			break;
+			case 666:
+				this.altoImagen = 70;
+				this.anchoImagen = 70;
+				this.xImagen = 70;
+				this.yImagen = 558;
 			break;
 		}
 	}
@@ -103,15 +129,34 @@ public class Tile {
 	}
 	
 	public void pintar(GraphicsContext graficos) {
-		graficos.drawImage(
+			graficos.drawImage(
 				Juego.imagenes.get(this.indiceImagen), 
 				this.xImagen, this.yImagen, 
 				this.anchoImagen, this.altoImagen, 
-				 this.x, this.y,
+				this.x, this.y,
 				this.anchoImagen, this.altoImagen
 			);
+			
+			/*
+			 * graficos.drawImage(
+				Juego.imagenes.get(this.indiceImagen), 
+				this.xImagen, this.yImagen, 
+				this.anchoImagen, this.altoImagen, 
+				this.x + (invertir==-1?70:0), this.y,
+				this.anchoImagen*invertir, this.altoImagen
+			);*/
+		
 	}
 	
 	
 	
 }
+
+/*
+if (condicion)
+	verdadero
+else 
+	falso
+	
+	
+condicion?verdadero:falso;*/
