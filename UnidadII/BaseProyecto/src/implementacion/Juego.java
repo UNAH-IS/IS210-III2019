@@ -3,7 +3,8 @@ package implementacion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import clases.Jugador;
+import clases.Item;
+import clases.JugadorAnimado;
 import clases.Tile;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -23,12 +24,15 @@ public class Juego extends Application{
 	private Canvas canvas;
 	private GraphicsContext graficos;
 	private int puntuacion = 0;
-	private Jugador jugador;
+	//private Jugador jugador;
+	private JugadorAnimado jugadorAnimado;
 	public static boolean derecha=false;
 	public static boolean izquierda=false;
 	public static boolean arriba=false;
 	public static boolean abajo=false;
 	public static HashMap<String, Image> imagenes; //Shift+Ctrl+O
+	private Item item;
+	private Item item2;
 	//private ArrayList<Image> imagenes;
 	
 	private ArrayList<Tile> tiles;
@@ -63,11 +67,14 @@ public class Juego extends Application{
 	}
 	
 	public void inicializarComponentes() {
-		jugador = new Jugador(-50,400,"goku",1);
+		//jugador = new Jugador(-50,400,"goku",1);
+		jugadorAnimado = new JugadorAnimado(50,400,"megaman",1, "correr");
 		root = new Group();
 		escena = new Scene(root,1000,500);
 		canvas  = new Canvas(1000,500);
 		imagenes = new HashMap<String,Image>();
+		item = new Item(100,200,0,0,"item");
+		item2 = new Item(200,200,0,0,"item");
 		cargarImagenes();
 		cargarTiles();
 	}
@@ -77,6 +84,7 @@ public class Juego extends Application{
 		imagenes.put("goku-furioso", new Image("goku-furioso.png"));
 		imagenes.put("tilemap", new Image("tilemap.png"));
 		imagenes.put("megaman", new Image("megaman.png"));
+		imagenes.put("item", new Image("item.png"));
 	}
 	
 	public void pintar() {
@@ -84,11 +92,14 @@ public class Juego extends Application{
 		graficos.fillRect(0, 0, 1000, 500);
 		graficos.setFill(Color.BLACK);
 		graficos.fillText("Puntuacion: " + puntuacion, 10, 10);
-		jugador.pintar(graficos);
-		
+		//jugador.pintar(graficos);
+		jugadorAnimado.pintar(graficos);
 		///Pintar tiles
 		for (int i=0;i<tiles.size();i++)
 			tiles.get(i).pintar(graficos);
+		
+		item.pintar(graficos);
+		item2.pintar(graficos);
 
 	}
 	
@@ -122,8 +133,8 @@ public class Juego extends Application{
 							abajo=true;
 							break;
 						case "SPACE":
-							jugador.setVelocidad(10);
-							jugador.setIndiceImagen("goku-furioso");
+							//jugador.setVelocidad(10);
+							//jugador.setIndiceImagen("goku-furioso");
 							break;
 					}
 			}			
@@ -148,8 +159,8 @@ public class Juego extends Application{
 					abajo=false;
 					break;
 				case "SPACE":
-					jugador.setVelocidad(1);
-					jugador.setIndiceImagen("goku");
+					//jugador.setVelocidad(1);
+					//jugador.setIndiceImagen("goku");
 					break;
 			}
 				
@@ -160,17 +171,26 @@ public class Juego extends Application{
 	}
 	
 	public void cicloJuego() {
+		long tiempoInicial = System.nanoTime();
 		AnimationTimer animationTimer = new AnimationTimer() {
-
+			//Esta rutina simula un ciclo de 60FPS
 			@Override
 			public void handle(long tiempoActualNanoSegundos) {
-				//Esta rutina simula un ciclo de 60FPS
+				double t = (tiempoActualNanoSegundos - tiempoInicial) / 1000000000.0;
 				pintar();
-				jugador.mover();
+				actualizar(t);
+				
 			}
 			
 		};
 		animationTimer.start(); //Inicia el ciclo
+	}
+	
+	public void actualizar(double t) {
+		jugadorAnimado.mover();
+		jugadorAnimado.actualizarAnimacion(t);
+		jugadorAnimado.verificarColisiones(item);
+		jugadorAnimado.verificarColisiones(item2);
 	}
 
 }

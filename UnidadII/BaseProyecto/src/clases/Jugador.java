@@ -12,7 +12,6 @@ public class Jugador {
 	private int y;
 	private String indiceImagen;
 	private int velocidad;
-	private HashMap<String,ArrayList<Rectangle>> animaciones;
 	
 	public Jugador(int x, int y, String indiceImagen, int velocidad) {
 		super();
@@ -65,18 +64,11 @@ public class Jugador {
 	
 	public void pintar(GraphicsContext graficos) {
 		graficos.drawImage(Juego.imagenes.get(this.indiceImagen), this.x, this.y);
+		
 	}
 	
-	public void crearAnimaciones() {
-		animaciones = new HashMap<String, ArrayList<Rectangle>>();
-		ArrayList<Rectangle> animacionIdle = new ArrayList<Rectangle>();
-		animacionIdle.add(new Rectangle(0,0,100,100));
-		animacionIdle.add(new Rectangle(0,100,100,100));
-		
-		animaciones.put("idle",animacionIdle);
-		
-		
-		
+	public void inicializarAnimaciones() {
+			
 	}
 }
 
