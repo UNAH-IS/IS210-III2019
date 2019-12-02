@@ -46,3 +46,55 @@
 
 
  Eventos: Son acciones del usuario, ejemplo: presionar una tecla, mover el cursor, dar click, doble click, etc.
+
+
+XML Xtensible Markup Language
+Es un formato de intercambio de informacion. Es un estandar.
+
+Organiza la información en etiquetas
+Etiqueta:
+
+    <etiqueta propiedad1="valor" propiedad2="valor2" ... propiedadN="valorN">
+        Contenido de la etiqueta.
+    </etiqueta>
+
+XML:
+<persona>
+    <nombre>Juan</nombre>
+    <apellido>Perez</apellido>
+    <edad>44</edad>
+    <fecha-nacimiento>
+        <dia>22</dia>
+        <mes>12</mes>
+        <anio>1980</anio>
+    </fecha-nacimiento>
+</persona>
+
+JSON:
+persona = {
+    nombre:'Juan',
+    apellido:'Perez',
+    edad:44,
+    fechaNacimiento:{
+        dia:22,
+        mes:12,
+        anio:1980
+    }
+}
+
+
+En una aplicacion de JavaFX que utilice GUI en FXML se debe configurar el "Run Configurations" de la siguiente forma:
+
+--module-path /home/marin/JavaFX/lib/ --add-modules=javafx.controls,javafx.fxml,javafx.base,javafx.media,javafx.web,javafx.swing
+
+
+
+Patron ModeloVistaControlador (MVC):
+Es un patron de desarrollo de software para segmentar los componentes de un aplicativo
+
+Modelo: La logica de negocio, estructuras de datos, informacion.
+        Estructura de clases, herencia, etc.
+Vista: Interfaz gráfica de Usuario (GUI)
+        Formularios, FXML
+Controlador: Funcionalidad de los eventos y acciones de usuario.
+        Clase controlador para gestionar eventos y comportamiento.
