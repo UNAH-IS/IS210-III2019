@@ -16,8 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="642.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.ControladorFormulario">
+<AnchorPane prefHeight="642.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorFormulario">
    <children>
       <SplitPane dividerPositions="0.50625" layoutX="154.0" layoutY="69.0" orientation="VERTICAL" prefHeight="642.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -79,35 +78,35 @@
                               <Insets right="5.0" />
                            </padding>
                         </Label>
-                        <TextField prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" />
-                        <TextField prefHeight="26.0" prefWidth="354.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField prefHeight="26.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="identificacion" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="cuenta" prefHeight="26.0" prefWidth="354.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="apellido" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="edad" prefHeight="26.0" prefWidth="110.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <HBox prefHeight="32.0" prefWidth="311.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <children>
-                              <RadioButton mnemonicParsing="false" text="Femenino">
+                              <RadioButton fx:id="rbtFemenino" mnemonicParsing="false" text="Femenino">
                                  <toggleGroup>
-                                    <ToggleGroup fx:id="GrupoGnero" />
+                                    <ToggleGroup fx:id="grupoGnero" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton mnemonicParsing="false" text="Masculino" toggleGroup="$GrupoGnero" />
-                              <RadioButton mnemonicParsing="false" text="Otro" toggleGroup="$GrupoGnero" />
+                              <RadioButton fx:id="rbtMasculino" mnemonicParsing="false" text="Masculino" toggleGroup="$grupoGnero" />
+                              <RadioButton fx:id="rbtOtro" mnemonicParsing="false" text="Otro" toggleGroup="$grupoGnero" />
                            </children>
                            <padding>
                               <Insets left="5.0" right="5.0" top="6.0" />
                            </padding>
                         </HBox>
-                        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <ComboBox prefHeight="26.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <DatePicker fx:id="fechaNacimiento" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <ComboBox fx:id="cboCarrera" prefHeight="26.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
                   <HBox layoutY="284.0" prefHeight="43.0" prefWidth="500.0" spacing="5.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Nuevo" />
-                        <Button mnemonicParsing="false" text="Guardar" />
-                        <Button mnemonicParsing="false" text="Actualizar" />
-                        <Button mnemonicParsing="false" text="Eliminar" />
+                        <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
+                        <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+                        <Button fx:id="btnActualizar" disable="true" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
+                        <Button fx:id="btnEliminar" disable="true" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
                         <Button mnemonicParsing="false" onAction="#salir" text="Salir" />
                      </children>
                   </HBox>
@@ -115,7 +114,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ListView layoutX="13.0" layoutY="11.0" prefHeight="312.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ListView fx:id="lstAlumnos" layoutX="13.0" layoutY="11.0" prefHeight="312.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>

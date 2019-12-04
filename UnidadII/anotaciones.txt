@@ -98,3 +98,19 @@ Vista: Interfaz gráfica de Usuario (GUI)
         Formularios, FXML
 Controlador: Funcionalidad de los eventos y acciones de usuario.
         Clase controlador para gestionar eventos y comportamiento.
+
+
+Interfaces (Esto no tiene nada que ver con GUI):
+En programación orientada a objetos, una interfaz es una estructura de datos, muy similar a una clase abstracta. En algunas ocasiones es llamada clase abstracta pura y tiene las siguientes Caracteristicas:
+
+1. Para declararse se utiliza la palabra reservada interface en vez de class.
+2. Todos los metodos de una interfaz son abstractos.
+3. No se pueden instanciar.
+4. No tienen constructor.
+5. Todos los atributos deben ser public static final.
+6. Son aún más genericas que las clases abstractas.
+7. Se utilizan para simular herencia multiple.
+8. Para aplicar herencia entre clase(hija) e interfaz se utiliza la palabra reservada implements.
+9. Para aplicar herencia entre interfaz e interfaz se utiliza la palabra reservada extends.
+10. Se pueden utilizar multiples interfaces padre separadas por coma.
+11. En Java, las interfaces se utilizan bastante para gestionar eventos.
