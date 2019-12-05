@@ -64,6 +64,10 @@ public class Carrera {
 		return this.nombreCarrera + "(" + this.codigo + ")";
 	}
 	
+	public String toCSV() {
+		return this.nombreCarrera + "," + this.codigo;
+	}
+	
 	public void solicitarInformacion() {
 		this.codigo = Integer.parseInt(JOptionPane.showInputDialog("Codigo Carrera:", this.codigo));
 		this.nombreCarrera = JOptionPane.showInputDialog("Nombre carrera:", this.nombreCarrera);

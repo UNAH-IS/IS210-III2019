@@ -82,6 +82,8 @@ persona = {
     }
 }
 
+CSV:
+Juan,Perez,44,22,12,1980
 
 En una aplicacion de JavaFX que utilice GUI en FXML se debe configurar el "Run Configurations" de la siguiente forma:
 
@@ -114,3 +116,10 @@ En programación orientada a objetos, una interfaz es una estructura de datos, m
 9. Para aplicar herencia entre interfaz e interfaz se utiliza la palabra reservada extends.
 10. Se pueden utilizar multiples interfaces padre separadas por coma.
 11. En Java, las interfaces se utilizan bastante para gestionar eventos.
+
+Lectura y Escritura de archivos (Flujos de entrada y salida, E/S, I/O)
+Tipos de flujos en Java:
+    Basados en caracteres: FileReader, FileWriter, BufferedReader, BufferedWriter
+    Basados en bytes
+    Archivos de acceso aleatorio
+    Archivos serializados

@@ -1,5 +1,9 @@
 package clases;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 public class Alumno {
@@ -88,6 +92,12 @@ public class Alumno {
 				+ apellido + ", edad=" + edad + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero
 				+ ", carrera=" + carrera + "]";
 	}
+	
+	public String toCSV() {
+		return identificacion + "," + cuenta + "," + nombre + ","
+				+ apellido + "," + edad + "," + fechaNacimiento + "," + genero
+				+ "," + carrera.toCSV() + "\n";
+	}
 
 	public void solicitarInformacion() {
 		this.identificacion = JOptionPane.showInputDialog("Identificación:", this.identificacion);
@@ -108,5 +118,16 @@ public class Alumno {
 
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public void guardarRegistroArchivo() {
+		try {
+			BufferedWriter archivo = new BufferedWriter(new FileWriter("usuarios.csv",true));
+			archivo.write(toCSV());
+			archivo.flush();
+			archivo.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

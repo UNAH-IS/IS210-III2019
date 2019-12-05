@@ -1,9 +1,14 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import clases.Alumno;
 import clases.Carrera;
@@ -101,6 +106,33 @@ public class ControladorFormulario implements Initializable{
 					
 				}
 		);
+		leerInformacionArchivo();
+	}
+	
+	public void leerInformacionArchivo(){
+		try {
+			BufferedReader flujo = new BufferedReader(new FileReader("usuarios.csv"));
+			String linea="";
+			while ((linea = flujo.readLine())!=null) {
+				System.out.println(linea);
+				String partes[] = linea.split(",");
+				alumnos.add(new Alumno(
+						partes[0],
+						partes[1],
+						partes[2],
+						partes[3],
+						Integer.parseInt(partes[4]),
+						partes[5],
+						partes[6],
+						new Carrera(Integer.parseInt(partes[8]),partes[7],0,null,null)
+				));
+			}
+			flujo.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
@@ -119,7 +151,7 @@ public class ControladorFormulario implements Initializable{
 			mensaje.show();
 			return; //Sale del metodo y no guardaria nada
 		}
-		alumnos.add(new Alumno(
+		Alumno alumno = new Alumno(
 				identificacion.getText(),
 				cuenta.getText(),
 				nombre.getText(),
@@ -128,7 +160,9 @@ public class ControladorFormulario implements Initializable{
 				fechaNacimiento.getValue().toString(),
 				((RadioButton)grupoGnero.getSelectedToggle()).getText(),
 				cboCarrera.getSelectionModel().getSelectedItem()
-		));
+		);
+		alumno.guardarRegistroArchivo();
+		alumnos.add(alumno);
 	}
 	
 	@FXML
@@ -171,7 +205,16 @@ public class ControladorFormulario implements Initializable{
 	
 	public void validar() {
 		errores.clear();//borra todos los elementos de un ArrayList
+		if (!Pattern.matches("[0-9]{4}-[0-9]{4}-[0-9]{5}", identificacion.getText()))
+			errores.add("La identidad no es válida");
 		
+		
+		/*En caso de querer validar un correo electronico
+		  
+		 if (!Pattern.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])", "jperez@gmail.com"))
+			errores.add("El correo es inválido");
+		 
+		 */
 		if (!edad.getText().isEmpty()) {
 			try {
 				Integer.parseInt(edad.getText());
