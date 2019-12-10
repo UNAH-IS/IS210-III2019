@@ -1,13 +1,12 @@
 package clases;
 
-import java.io.FileOutputStream;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 import javax.swing.JOptionPane;
 
-public class Alumno implements Serializable{
+public class Alumno {
 	private String identificacion;
 	private String cuenta;
 	private String nombre;
@@ -119,5 +118,16 @@ public class Alumno implements Serializable{
 
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public void guardarRegistroArchivo() {
+		try {
+			BufferedWriter archivo = new BufferedWriter(new FileWriter("usuarios.csv",true));
+			archivo.write(toCSV());
+			archivo.flush();
+			archivo.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

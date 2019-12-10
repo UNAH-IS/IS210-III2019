@@ -1,12 +1,9 @@
 package application;
 
-import java.io.EOFException;
-import java.io.FileInputStream;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -114,18 +111,23 @@ public class ControladorFormulario implements Initializable{
 	
 	public void leerInformacionArchivo(){
 		try {
-			ObjectInputStream archivo = new ObjectInputStream(new FileInputStream("usuarios.data"));
-			try {
-				while (true) {
-					Alumno a = (Alumno)archivo.readObject();
-					alumnos.add(a);
-				}
-			}catch(EOFException e) {
-				System.out.println("Fin del archivo");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+			BufferedReader flujo = new BufferedReader(new FileReader("usuarios.csv"));
+			String linea="";
+			while ((linea = flujo.readLine())!=null) {
+				System.out.println(linea);
+				String partes[] = linea.split(",");
+				alumnos.add(new Alumno(
+						partes[0],
+						partes[1],
+						partes[2],
+						partes[3],
+						Integer.parseInt(partes[4]),
+						partes[5],
+						partes[6],
+						new Carrera(Integer.parseInt(partes[8]),partes[7],0,null,null)
+				));
 			}
-			archivo.close();
+			flujo.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -159,22 +161,8 @@ public class ControladorFormulario implements Initializable{
 				((RadioButton)grupoGnero.getSelectedToggle()).getText(),
 				cboCarrera.getSelectionModel().getSelectedItem()
 		);
-		
+		alumno.guardarRegistroArchivo();//Guardar en el archivo
 		alumnos.add(alumno);//Guardar en el observableList
-		guardarObjetosArchivo();
-	}
-	
-	public void guardarObjetosArchivo() {
-		try {
-			ObjectOutputStream archivo = new ObjectOutputStream(new FileOutputStream("usuarios.data"));
-			for (int i=0;i<alumnos.size();i++) {
-				archivo.writeObject(alumnos.get(i));			
-			}
-			archivo.flush();
-			archivo.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@FXML

@@ -1,10 +1,8 @@
 package clases;
 
-import java.io.Serializable;
-
 import javax.swing.JOptionPane;
 
-public class Carrera implements Serializable{
+public class Carrera {
 	private int codigo;
 	private String nombreCarrera;
 	private int cantidadClases;
